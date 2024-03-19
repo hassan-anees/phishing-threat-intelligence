@@ -1,0 +1,102 @@
+{
+  "type": "bundle",
+  "id": "bundle1",
+  "objects": [
+    {
+      "type": "identity",
+      "id": "identity-target",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "name": "University of X",
+      "description": "A university located in region X. Having a student population of 20k plus students"
+    },
+    {
+      "type": "threat-actor",
+      "id": "threat-actor",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "name": "APT-Random",
+      "description": "A financially motivated single party group that targets higher education organizations"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator-attachment",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "name": "Malicious email attachment",
+      "description": "Attached zip file to an email",
+      "indicator_types": ["malicious-activity"],
+      "pattern": "",
+      "pattern_type": "stix"
+    },
+    {
+      "type": "malware",
+      "id": "malware",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "name": "Bandook",
+      "description": "Bandook is a commercially available RAT, written in Delphi and C++"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "name": "Phishing",
+      "description": "APT-Random uses spear-phishing in particular through attachements, specifically zip files containing malware. Using the software gophish to create templates and send of fake emails.",
+      "external_references": [
+        {
+          "source_name": "capec",
+          "external_id": "CAPEC-98"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "id": "relationship-threat-identity",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "relationship_type": "attributed-to",
+      "source_ref": "threat-actor",
+      "target_ref": "identity-threat-actor"
+    },
+    {
+      "type": "relationship",
+      "id": "relationship-threat-identity",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "relationship_type": "targets",
+      "source_ref": "threat-actor",
+      "target_ref": "identity-target"
+    },
+    {
+      "type": "relationship",
+      "id": "relationship-threat-attackpattern",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "relationship_type": "uses",
+      "source_ref": "threat-actor",
+      "target_ref": "attack-pattern"
+    },
+    {
+      "type": "relationship",
+      "id": "relationship-threat-malware",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "relationship_type": "uses",
+      "source_ref": "threat-actor",
+      "target_ref": "malware"
+    },
+    {
+      "type": "relationship",
+      "id": "relationship-indicator",
+      "created": "2022-11-20T19:03:48.000Z",
+      "modified": "2022-11-20T19:03:48.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator-attachment",
+      "target_ref": "attack-pattern"
+    }
+  ]
+}
